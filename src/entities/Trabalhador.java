@@ -3,13 +3,15 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import services.TrabalhadorServices;
+
 public class Trabalhador{
     private String name;
     private double salarioBase;
     private Cargo cargo;
     private List<Contratos> contratos = new ArrayList<>();
 
-    //Construtores
+    //Construtor
     public Trabalhador() {
     }
 
@@ -47,29 +49,7 @@ public class Trabalhador{
         return salarioBase;
     }
 
-    //Métodos
-    public void addContratos(Contratos contratos) {
-        this.contratos.add(contratos);
-    }
-
-    public void removeContratos(int id) {
-        this.contratos.removeIf(contratos -> contratos.getId() == id);
-    }
-
-    public void getContratos() {
-        for (Contratos contratos2 : this.contratos) {
-            System.out.println(contratos2);
-        }
-    }
-
-    public double salarioMes(int mes){
-        double soma = 0;
-        for (Contratos contratos2 : this.contratos) {
-            if (contratos2.getDate().getMonthValue() + 1 == mes) {
-                soma += contratos2.totalValor();
-            }
-        }
-        return soma;
-    }
-
+	public List<Contratos> getContratos() {
+		return contratos;
+	}
 }
